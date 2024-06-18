@@ -1,63 +1,49 @@
-document.addEventListener('DOMContentLoaded', function () {
-    let calculatorDisplay = document.querySelector('.calculator-display');
-    let calculatorButtons = document.querySelectorAll('.btn');
-    let expression = '';
-  
-    calculatorButtons.forEach(function (btn) {
-      btn.addEventListener('click', function () {
-        handleButtonPress(btn.innerText);
-      });
-    });
-  
-    window.addEventListener('keydown', function (event) {
-      const key = event.key;
-      const allowedKeys = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '+', '-', '*', '/', '.', 'Enter', 'Backspace', 'Delete', 'c', 'C'];
-      if (allowedKeys.includes(key)) {
-        handleButtonPress(key);
-      }
-    });
-  
-    function handleButtonPress(btnValue) {
-      if (btnValue === 'C') {
-        resetCalculator();
-      } else if (btnValue === 'DEL' || btnValue === 'Backspace') {
-        deleteLastChar();
-      } else if (btnValue === '=' || btnValue === 'Enter') {
-        performCalculation();
-      } else {
-        updateDisplay(btnValue);
-      }
-    }
-  
-    function resetCalculator() {
-      calculatorDisplay.textContent = "";
-      expression = '';
-    }
-  
-    function deleteLastChar() {
-      expression = expression.slice(0, -1);
-      calculatorDisplay.textContent = expression;
-    }
-  
-    function updateDisplay(value) {
-      expression += value;
-      calculatorDisplay.textContent = expression;
-    }
-  
-    function performCalculation() {
-      if (expression === '') {
-        calculatorDisplay.textContent = 'Error';
-        return;
-      }
-  
-      try {
-        let result = eval(expression);
-        result = parseFloat(result.toFixed(5));
-        calculatorDisplay.textContent = result;
-        expression = result.toString();
-      } catch (error) {
-        calculatorDisplay.textContent = 'Error';
-        expression = '';
-      }
-    }
-  });
+const men_section = document.querySelector('.men');
+const women_section = document.querySelector('.women');
+const kids_section = document.querySelector('.kids');
+const home_section = document.querySelector('.homeliving');
+const beauty_section = document.querySelector('.beauty');
+
+const men_section_items = document.querySelector('.men-section-items');
+const women_section_items = document.querySelector('.women-section-items');
+const kids_section_items = document.querySelector('.kids-section-items');
+const home_section_items = document.querySelector('.home-section-items');
+const beauty_section_items = document.querySelector('.beauty-section-items');
+
+const container_ele = document.querySelector('.container');
+var bodyele = document.getElementsByTagName("BODY");
+
+men_section.onmouseover = () => {
+    men_section_items.classList.remove('visibility');
+}
+men_section.onmouseout = () => {
+    men_section_items.classList.add('visibility');
+} 
+
+women_section.onmouseover = () => {
+    women_section_items.classList.remove('visibility');
+}
+women_section.onmouseout = () => {
+    women_section_items.classList.add('visibility');
+} 
+
+kids_section.onmouseover = () => {
+    kids_section_items.classList.remove('visibility');
+}
+kids_section.onmouseout = () => {
+    kids_section_items.classList.add('visibility');
+} 
+
+home_section.onmouseover = () => {
+    home_section_items.classList.remove('visibility');
+}
+home_section.onmouseout = () => {
+    home_section_items.classList.add('visibility');
+} 
+
+beauty_section.onmouseover = () => {
+    beauty_section_items.classList.remove('visibility');
+}
+beauty_section.onmouseout = () => {
+    beauty_section_items.classList.add('visibility');
+}
